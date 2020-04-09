@@ -27,13 +27,21 @@ public class newSorting {
     public void mergeSortedHalves(int[]a, int []left, int[] right){
         int leftCount = 0;
         int rightCount = 0;
-        for(int i = 0; i<a.length+1; i++) {
-            if (left[leftCount] < right[rightCount]) {
-                a[i] = left[leftCount];
+        for(int i = 0; i<a.length; i++) {
+            if(leftCount >= left.length){
+                a[i]=right[rightCount];
+                rightCount++;
+            }
+            if(rightCount >= right.length){
+                a[i]=left[leftCount];
+                leftCount++;
+            }
+            if(left[leftCount] < right[rightCount]){
+                a[i]=left[leftCount];
                 leftCount++;
             }
             if(right[rightCount] < left[leftCount]){
-                a[i] = right[rightCount];
+                a[i]=right[rightCount];
                 rightCount++;
             }
         }
