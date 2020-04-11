@@ -24,27 +24,40 @@ public class newSorting {
 
 
     public void mergeSortedHalves(int[]a, int []left, int[]right){
-        mergeSorted(a,left,right,0,0,0);
-    }
-    public void mergeSorted(int[]a, int[]b, int[]c, int bCount, int cCount, int count) {
-        if (count == a.length - 1) {
-            return;
+        int mainCount = 0;
+        int leftCount = 0;
+        int rightCount = 0;
+        while (leftCount < left.length-1 || rightCount < right.length-1) {
+            if (left[leftCount] < right[rightCount]) {
+                a[mainCount] = left[leftCount];
+                mainCount++;
+                leftCount++;
+            }
+            if (right[rightCount] < left[leftCount]) {
+                a[mainCount] = right[rightCount];
+                mainCount++;
+                rightCount++;
+            }
+            if(right[rightCount]==left[leftCount]){
+                a[mainCount] = right[rightCount];
+                mainCount++;
+                a[mainCount] = left[leftCount];
+                mainCount++;
+                leftCount++;
+                rightCount++;
+            }
         }
-        if (bCount >= b.length - 1) {
-            a[count] = c[cCount];
-            mergeSorted(a, b, c, bCount, cCount + 1, count + 1);
+        if (leftCount < left.length) {
+            for (int i = mainCount; i < a.length; i++) {
+                a[i] = left[leftCount];
+                leftCount++;
+            }
         }
-        if (cCount >= c.length - 1 && bCount < b.length - 1) {
-            a[count] = b[bCount];
-            mergeSorted(a, b, c, bCount + 1, cCount, count + 1);
-        }
-        if (b[bCount] < c[cCount] && bCount < b.length - 1) {
-            a[count] = b[bCount];
-            mergeSorted(a, b, c, bCount + 1, cCount, count + 1);
-        }
-        if (c[cCount] < b[bCount] && cCount < c.length - 1) {
-            a[count] = c[cCount];
-            mergeSorted(a, b, c, bCount, cCount + 1, count + 1);
+        if (rightCount < right.length) {
+            for (int i = mainCount; i < a.length; i++) {
+                a[i] = right[rightCount];
+                rightCount++;
+            }
         }
     }
 

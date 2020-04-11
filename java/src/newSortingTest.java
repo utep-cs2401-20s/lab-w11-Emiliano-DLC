@@ -6,13 +6,14 @@ class newSortingTest {
     //Test quick sort method with a unsorted array of integers
     void newSorting1(){
         newSorting test = new newSorting();
-        int[] a = {1,6,8,9,7,3};
+        int[] a = {6,8,1,3,9,7};
         int size = a.length;
         test.newSorting(a,size);
         assertArrayEquals(new int[]{1,3,6,7,8,9}, a);
     }
     @Test
     //Test quick sort with a unsorted char array.
+    //while sorting 'e' should be used as pivot
     public void newSorting2(){
         newSorting test = new newSorting();
         int[] a = {'e','m','i','l','i','a','n','o'};
@@ -26,7 +27,7 @@ class newSortingTest {
     public void newSorting3(){
         newSorting test = new newSorting();
         int[] a = {'e','m','i','l','i','a','n','o'};
-        int size = a.length+1;
+        int size = 100;
         test.newSorting(a,size);
         assertArrayEquals(new int[]{'a','e','i','i','m','n','o'}, a);
 
