@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class newSortingTest {
     @Test
     //Test quick sort method with a unsorted array of integers
+    //pivot is 6
     void newSorting1(){
         newSorting test = new newSorting();
         int[] a = {6,8,1,3,9,7};
